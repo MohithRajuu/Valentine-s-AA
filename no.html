@@ -83,48 +83,11 @@
     </style>
 </head>
 <body>
-    <h1>Wait... Don't Leave Me! 😢</h1>
+    <h1>Fatal Error! Please go back and try a different button.</h1>
     <p class="message" id="typedMessage"></p>
     
     <button class="go-back" onclick="goBack()">Go Back 🔙</button>
 
-    <script>
-        const message = `Please go back to the previous page and try again... 💔`;
-
-        let i = 0;
-        function typeText() {
-            if (i < message.length) {
-                document.getElementById("typedMessage").textContent += message.charAt(i);
-                i++;
-                setTimeout(typeText, 50);
-            } else {
-                document.getElementById("typedMessage").style.borderRight = "none"; // Remove cursor after typing
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", typeText);
-
-        function goBack() {
-            window.history.back(); // Takes user to the previous page
-        }
-
-        function createTears() {
-            for (let i = 0; i < 15; i++) {
-                let tear = document.createElement("div");
-                tear.classList.add("tear");
-                tear.innerHTML = "💧";
-                tear.style.left = `${Math.random() * 100}vw`;
-                tear.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                document.body.appendChild(tear);
-
-                setTimeout(() => {
-                    tear.remove();
-                }, 3000);
-            }
-        }
-
-        // Start tears animation
-        setInterval(createTears, 2000);
-    </script>
+    
 </body>
 </html>
