@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Said YES! 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ketchum+Manis&display=swap');
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            font-family: 'Ketchum Manis', cursive;
+            text-align: center;
+            font-size: 28px;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: bold; /* Made header bold */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .message {
+            font-size: 26px; /* Slightly larger font */
+            font-weight: bold; /* Increased thickness */
+            margin-top: 10px;
+            color: #d6336c; /* Darker pink */
+            white-space: pre-line; /* Ensures new lines are respected */
+            border-right: 3px solid #d6336c; /* Cursor effect */
+            overflow: hidden;
+            display: inline-block;
+            animation: typing 5s steps(80, end) forwards, blink 0.6s infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .heart-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #ff69b4;
+            animation: floatUp 4s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .celebrate {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            background: #ff4081;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .celebrate:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>I love you, Bangaaru 💕</h1>
+    <p class="message" id="typedMessage"></p>
+        
+    
+
+    <div class="heart-container"></div>
+
+    <script>
+        const message = `Thank you, Bangaaru!
+Thank you for making me feel special, every day!
+Thank you for being so beautiful!
+Thank you for choosing me despite the fact that I make you cry every day.
+Thank you for making me be a better person.
+Thank you for loving me and making me the happiest version of myself!
+`;
+
+        let i = 0;
+        function typeText() {
+            if (i < message.length) {
+                document.getElementById("typedMessage").textContent += message.charAt(i);
+                i++;
+                setTimeout(typeText, 50); // Adjust typing speed here
+            } else {
+                document.getElementById("typedMessage").style.borderRight = "none"; // Remove cursor after typing
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", typeText);
+
+        function createHearts() {
+            const heartContainer = document.querySelector('.heart-container');
+            for (let i = 0; i < 30; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = "💖";
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.top = `${Math.random() * 100}vh`;
+                heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                heartContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+        }
+
+        function startConfetti() {
+            createHearts();
+        }
+
+        // Start floating hearts immediately
+        createHearts();
+        setInterval(createHearts, 3000);
+    </script>
+</body>
+</html>
